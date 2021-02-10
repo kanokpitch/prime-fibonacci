@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.nvs-container {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.nvs-row {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.nvs-col {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    min-height: 100px;
+}
+
+.nvs-col.one {
+    align-items: center;
+    justify-content: center;
+
+    min-width: 200px;
+    max-width: 200px;
+    background-color: rgb(233, 233, 233);
+}
+
+.nvs-col.two {
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-width: 100px;
+    overflow-y: scroll;
+}
+
+.nvs-col.three {
+    min-width: 300px;
+    max-width: 300px;
+    background-color: rgb(233, 233, 233);
+}
+
+.nvs-control {
+    display: block;
+    padding: .25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.w-85 {
+    width: 85%;
+}
+
+@media only screen and (max-width: 600px) {
+    .nvs-row {
+        overflow-x: scroll;
+    }
+}

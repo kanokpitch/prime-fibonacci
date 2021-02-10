@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="nvs-container">
+        <div class="nvs-row">
+            <div class="nvs-col one">
+                <input type="text" class="nvs-control w-85 num-mask" id="num_mask" />
+            </div>
+            <div class="nvs-col two">
+                <select class="nvs-control" id="prime_fibonacci">
+                    <option value="is_prime">isPrime</option>
+                    <option value="is_fibonacci">isFibonacci</option>
+                </select>
+            </div>
+            <div class="nvs-col three">
+                <span class="result"></span>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.inputmask.min.js"></script>
+    <script>
+        var numMask = document.getElementById("num_mask");
+
+        var im = new Inputmask("-{0,1}9{1,8}.9");
+        im.mask(numMask);
+
+        $(function () {
+            onKeyupInput();
+        });
+
+        function onKeyupInput() {
+            $("#num_mask").keyup(function (event) {
+                if (parseInt($(this).val()) < 0) {
+                    $(this).val(1);
+                }
+
+                if (parseFloat($(this).val()) % 1 !== 0) {
+                    $(this).val(Math.round($(this).val()));
+                    $(this).val(parseFloat($(this).val()));
+                }
+
+                isWhat();
+            }).keydown(function (event) {
+                if (event.which == 13) {
+                    // ...
+                }
+            });
+        }
+
+        function isWhat() {
+            var num = $("#num_mask").val();
+
+            if ($('#prime_fibonacci').val() == 'is_prime') {
+                $('.result').text(isPrime(num));
+            } else {
+                $('.result').text(isFibonacci(num));
+            }
+        }
+
+        function isPrime(num) {
+            let isPrime = true;
+            var number = parseFloat(num);
+
+            if (number === 1) {
+                isPrime = false;
+            } else if (number > 1) {
+                for (let i = 2; i < number; i++) {
+                    if (number % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+
+            return isPrime;
+        }
+
+        function isFibonacci(num) {
+            var number = parseInt(num);
+
+            if (isSquare(5 * (number * number) - 4) || isSquare(5 * (number * number) + 4)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function isSquare(n) {
+            return n > 0 && Math.sqrt(n) % 1 === 0;
+        };
+    </script>
+</body>
+
+</html>
